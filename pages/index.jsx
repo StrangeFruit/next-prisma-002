@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useState} from 'react'
-import {PrismaClient} from '@prisma/client'
+import prisma from '../lib/prisma';
 
 
-const prisma = new PrismaClient();
+
 
 export async function getServerSideProps(context) {
   const message = await prisma.message.findMany();
