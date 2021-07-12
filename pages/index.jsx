@@ -4,17 +4,17 @@ import React, {useState} from 'react'
 import prisma from '../lib/prisma';
 
 
-async function getMessage(){
-  const msg = await fetch(`/api/findMsg`, {
-    method:'GET',
+// async function getMessage(){
+//   const msg = await fetch(`/api/findMsg`, {
+//     method:'GET',
 
-  })
-  if(!msg.ok){
-    throw new Error(msg.statusText)
-  }
+//   })
+//   if(!msg.ok){
+//     throw new Error(msg.statusText)
+//   }
 
-  return await msg.json()
-}
+//   return await msg.json()
+// }
 
 // async function createMessage(msg){
 //   const msg = await fetch('http://localhost:3000/api/findMsg', {
@@ -40,7 +40,6 @@ export async function getServerSideProps() {
     props: {
       initMsg:message
     },
-    revalidate: 10, 
   }
 };
 
