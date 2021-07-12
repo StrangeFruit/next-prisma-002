@@ -1,13 +1,39 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useState} from 'react'
-import prisma from '../lib/prisma';
+// import prisma from '../lib/prisma';
 
 
+async function getMessage(){
+  const msg = await fetch(`/api/findMsg`, {
+    method:'GET',
+
+  })
+  if(!msg.ok){
+    throw new Error(msg.statusText)
+  }
+
+  return await msg.json()
+}
+
+// async function createMessage(msg){
+//   const msg = await fetch('http://localhost:3000/api/findMsg', {
+//     method:'POST',
+//     body:JSON.stringify(msg)
+
+//   })
+//   if(!msg.ok){
+//     throw new Error(msg.statusText)
+//   }
+
+//   return await msg.json();
+// }
 
 
-export async function getStaticProps() {
-  const message = await prisma.message.findMany();
+export async function getServerSideProps() {
+  // const message = await prisma.message.findMany();
+  const message = await getMessage();
+  // const messageParse = JSON.parse()
   // const stringifiedData = safeJsonStringify(message);
   // const data = JSON.parse(stringifiedData);
   return {
