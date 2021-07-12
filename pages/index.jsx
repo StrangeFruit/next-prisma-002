@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import React, {useState} from 'react'
-// import prisma from '../lib/prisma';
+import prisma from '../lib/prisma';
 
 
 async function getMessage(){
