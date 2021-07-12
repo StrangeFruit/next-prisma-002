@@ -6,16 +6,17 @@ import prisma from '../lib/prisma';
 
 
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   const message = await prisma.message.findMany();
   // const stringifiedData = safeJsonStringify(message);
   // const data = JSON.parse(stringifiedData);
   return {
     props: {
       initMsg:message
-    }
-  };
-}
+    },
+    revalidate: 10, 
+  }
+};
 
 export default function Home({initMsg}) {
   const [messages, setMessages] = useState(initMsg)
