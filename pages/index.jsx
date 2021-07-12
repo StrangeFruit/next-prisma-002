@@ -31,8 +31,8 @@ async function getMessage(){
 
 
 export async function getServerSideProps() {
-  // const message = await prisma.message.findMany();
-  const message = await getMessage();
+  const message = await prisma.message.findMany();
+  // const message = await getMessage();
   // const messageParse = JSON.parse()
   // const stringifiedData = safeJsonStringify(message);
   // const data = JSON.parse(stringifiedData);
